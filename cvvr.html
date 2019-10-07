@@ -41,13 +41,13 @@
                     // en créant des secteurs d'un nombre maximum de 12 aérodromes, on arrive à nos fins.
                     // Ajoutez autant de secteurs que besoin.
                     var listeAeros = [
-                        { nom: 'Alpes du Sud',
-                          liste: ['LFMX','LFNS','LFNA','LFTM','LFNJ','LFTP','LFNF','LFNC','LFMR','LFMF']},
-                        { nom: 'Rhone',
-                          liste: ['LFJF','LFNH','LFJE','LFHE','LFLU','LFHD','LFKE']},
-                        { nom: 'Alpes du Nord',
+                        { nom: 'Secteur Nord',
+                          liste: ['LFLO','LFLN','LFHX','LFLV','LFGN','LFGM','LFHY','LFQG','LFQF','LFGH','LFEI','LFLH']},
+                        // { nom: 'Rhone',
+                        //   liste: ['LFJF','LFNH','LFJE','LFHE','LFLU','LFHD','LFKE']},
+                        { nom: 'Secteur Sud',
                           liste: ['LFLG','LFLE','LFKA','LFKA','LFKX','LFLJ','LFKD','LFKR','LFLP','LFHM','LFHZ']},
-            
+
                     ];
                     // liste des notams de FIR à afficher, (un devrait suffir dans la plupart des cas)
                     var listeFIR = [
@@ -56,8 +56,8 @@
                     //{ nom: 'FIR Paris',
                     //liste: ['LFFF']},
                     ];
-            
-            
+
+
                     // On initialise la date du jour pour tout le document
                     var date = new Date();
                     var timeSince1970 = date.getTime();
@@ -85,13 +85,13 @@
                         img = document.getElementById(imgid);
                         img.src = imgsrc;
                     }
-			    </script>    
+			    </script>
 
     <!-- Premier slide -->
                 <section data-autoslide="1">
                     <iframe src="http://www.notaminfo.com/francemap" width="1024" height="768"></iframe>
                 </section>
-            
+
 			    <!-- Premier slide -->
 			    <section>
                     <h1>Briefing Météo</h1>
@@ -104,11 +104,11 @@
                     <iframe type="hidden" name='aeroweb-iframe' src="https://aviation.meteo.fr/ajax/login_valid.php" width="0" height="0"></iframe>
                     <script type="text/javascript">
                         document.getElementById('formloginaeroweb').submit();
-                        sleep(2000); //pas très élégant, faute de mieux ça permet d'attendre la connexion à météo france avant de charger les cartes       
+                        sleep(2000); //pas très élégant, faute de mieux ça permet d'attendre la connexion à météo france avant de charger les cartes
                     </script>
 			    </section>
-			              
-		
+
+
                 <!-- un slide -->
                 <section>
                     <section>
@@ -128,10 +128,10 @@
                         document.write('<img src="https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/PL'+day+'12_large.gif" style="height:620px">');
                     </script>
 			    </section>
-			
-			
 
-			
+
+
+
                 <!-- un slide -->
                 <!-- les photos satellites sont chargées une à une et réassemblées en image animée avec la librairie gallery.css pour reveal.js -->
                 <section>
@@ -141,16 +141,16 @@
                         <script>
                             var minutesat = minutes;
                             var hoursat = hours -1;
-            
-            
+
+
                             if(minutesat>=0){minutesat = '00';}
                             if(minutesat>=15){minutesat = '15';}
                             if(minutesat>=30){minutesat = '30';}
                             if(minutesat>=45){minutesat = '45';}
-            
+
                             var previousSat = function(){
                                 if(minutesat=='00'){minutesat = '45'; hoursat--; if(hoursat.toString().length==1){var zero = '0'; hoursat = zero.concat(hoursat);}}
-                                else{ 
+                                else{
                                     if(minutesat=='15'){minutesat = '00';}
                                     else{
                                         if(minutesat=='30'){minutesat = '15';}
@@ -161,7 +161,7 @@
                                 }
                             }
 
-            
+
                             var arrayImages = [];
                             for(i=0; i<7; i++){
                                 arrayImages.push('<li><img src="http://fr.sat24.com/image?type=visual&region=fr&timestamp='+ymd+hoursat+minutesat+ '"></li>');
@@ -180,15 +180,15 @@
                         <script>
                             var minutesat = minutes;
                             var hoursat = hours-1;
-            
+
                             if(minutesat>=0){minutesat = '00';}
                             if(minutesat>=15){minutesat = '15';}
                             if(minutesat>=30){minutesat = '30';}
                             if(minutesat>=45){minutesat = '45';}
-            
+
                             var previousSat = function(){
                                 if(minutesat=='00'){minutesat = '45'; hoursat--; if(hoursat.toString().length==1){var zero = '0'; hoursat = zero.concat(hoursat);}}
-                                else{ 
+                                else{
                                     if(minutesat=='15'){minutesat = '00';}
                                     else{
                                         if(minutesat=='30'){minutesat = '15';}
@@ -198,7 +198,7 @@
                                     }
                                 }
                             }
-            
+
                             var arrayImages = [];
                             for(i=0; i<10; i++){
                                 arrayImages.push('<li><img src="http://fr.sat24.com/image?type=infraPolair&region=eu&timestamp='+ymd+hoursat+minutesat+ '"></li>');
@@ -207,105 +207,108 @@
                             for(j=arrayImages.length-1; j>0; j--){
                                 document.write(arrayImages[j]);
                                 if(j==1){document.write(arrayImages[j]); document.write(arrayImages[j]);}
-            
+
                             }
                         </script>
                     </ul>
-                </section>			
                 </section>
-			
+                </section>
+
 			    <!-- un slide -->
 			    <section>
                     <h4>Radar pluie</h4>
                     <img src="http://www.meteo60.fr/radars/animation-radar-france.gif" style="height:620px;">
 			    </section>
-			
+
 			    <!-- un slide -->
 			    <!-- un slide -->
 			    <section data-autoslide="13000">
                     <h4>Précipitations </h4>
                     <ul class="gallery" data-interval="1" data-iterations="0">
                         <script class='enLigne'>
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-7-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-8-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-9-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-10-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-11-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-12-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-13-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-14-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-15-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-16-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-17-4.png" style="height:620px;"></li>');
-                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/runs/'+ymd+'00/aromehd-1-18-4.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-7-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-8-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-9-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-10-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-11-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-12-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-13-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-14-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-15-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-16-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-17-0.png" style="height:620px;"></li>');
+                            document.write('<li><img src="http://modeles7.meteociel.fr/modeles/arome/archives/'+ymd+'00/aromehd-1-18-0.png" style="height:620px;"></li>');
                         </script>
                     </ul>
-                    
+
 			    </section>
-			
-			<!-- meteo france -->
-            <!-- les cartes de vent sont chargées en deux slides superposés, celle du dessus à 12H, celle du dessous à 15h -->
-            <script>
-                var imsurf12 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-10m&date='+ymd+'120000&mode=img&comment=';
-                var imsurf15 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-10m&date='+ymd+'150000&mode=img&comment=';
-                var im150012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl050&date='+ymd+'120000&mode=img&comment=';
-                var im150015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl050&date='+ymd+'150000&mode=img&comment=';
-                var im300012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl100&date='+ymd+'120000&mode=img&comment=';
-                var im300015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl100&date='+ymd+'150000&mode=img&comment=';
-                var im550012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl180&date='+ymd+'120000&mode=img&comment=';
-                var im550015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl180&date='+ymd+'150000&mode=img&comment=';
-            </script>
-                <section>    
+
+    			<!-- meteo france -->
+                <!-- les cartes de vent sont chargées en deux slides superposés, celle du dessus à 12H, celle du dessous à 15h -->
+                <script>
+                    var imsurf12 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-pmer-10m&date='+ymd+'120000&mode=img&comment=';
+                    var imsurf15 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-pmer-10m&date='+ymd+'150000&mode=img&comment=';
+                    var im150012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl050&date='+ymd+'120000&mode=img&comment=';
+                    var im150015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl050&date='+ymd+'150000&mode=img&comment=';
+                    var im300012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl100&date='+ymd+'120000&mode=img&comment=';
+                    var im300015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl100&date='+ymd+'150000&mode=img&comment=';
+                    var im550012 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl180&date='+ymd+'120000&mode=img&comment=';
+                    var im550015 = 'https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl180&date='+ymd+'150000&mode=img&comment=';
+                </script>
+
+                <section>
                 <section>
                     <h4 onclick="reloadImg('i1',imsurf12)">12H UTC Surface</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i1" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-10m&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i1" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-pmer-10m&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
-            
+
                 <section>
                     <h4 onclick="reloadImg('i2',imsurf15)">15H UTC Surface</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i2" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-10m&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i2" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-pmer-10m&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
                 </section>
+
             <!-- les cartes de vent sont chargées en deux slides superposés, celle du dessus à 12H, celle du dessous à 15h -->
                 <section>
                 <section>
                     <h4 onclick="reloadImg('i3',im150012)">12H UTC 1500m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i3" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl050&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i3" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl050&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
-            
+
                 <section>
                     <h4 onclick="reloadImg('i4',im150015)">15H UTC 1500m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i4" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl050&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i4" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl050&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
-                </section> 
+                </section>
+
             <!-- les cartes de vent sont chargées en deux slides superposés, celle du dessus à 12H, celle du dessous à 15h -->
                 <section>
                 <section>
                     <h4 onclick="reloadImg('i5',im300012)">12H UTC 3000m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i5" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl100&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i5" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl100&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
-            
+
                 <section>
                     <h4 onclick="reloadImg('i6',im300015)">15H UTC 3000m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i6" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl100&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i6" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl100&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
-                    <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>    
+                    <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
                 </section>
             <!-- les cartes de vent sont chargées en deux slides superposés, celle du dessus à 12H, celle du dessous à 15h -->
@@ -313,72 +316,88 @@
                 <section>
                     <h4 onclick="reloadImg('i7',im550012)">12H UTC 5500m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i7" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl180&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i7" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl180&date='+ymd+'120000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
                     <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
-            
+
                 <section>
                     <h4 onclick="reloadImg('i8',im550015)">15H UTC 5500m</h4>
                     <script class='enLigne'>
-                        document.write('<img id="i8" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france-se/wind-fl180&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:800px">');
+                        document.write('<img id="i8" src="https://aviation.meteo.fr/affiche_image.php?time=1455464332&type=regional/france/wind-fl180&date='+ymd+'150000&mode=img&comment=" alt="connect to https://aviation.meteo.fr/login.php and relaunch" style="max-height:890px">');
                     </script>
-                    <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>    
+                    <p><a href="https://aviation.meteo.fr/login.php" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Aéroweb</a></p>
                 </section>
                 </section>
 
-			
-			
-			
-			
-			
-
-            			
             <!-- sondage météociel -->
+
+                <!-- Roanne: 4.08319, 46.0412 -->
             	<section>
-                    <h4>Sondage modélisé Météociel / Saint Auban</h4>
-                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=44.0825&lon=5.99417" width="1024" height="768"></iframe>
+                <section>
+                    <h4>Sondage modélisé Météociel / Roanne</h4>
+                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=46.0412&lon=4.08319" width="1024" height="768"></iframe>
 			    </section>
-			
+
+                <!-- Cosne: 2.94561, 47.4138 -->
 			    <section>
-                    <h4>Sondage modélisé Météociel / Briançon</h4>
-                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=44.8964&lon=6.64941" width="1024" height="768"></iframe>
+                    <h4>Sondage modélisé Météociel / Cosne</h4>
+                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=47.4138&lon=2.94561" width="1024" height="768"></iframe>
 			    </section>
-			
-			
-			<!-- un slide 
+
+                <!-- Dijon: 5.04433, 47.3303 -->
+                <section>
+                    <h4>Sondage modélisé Météociel / Dijon</h4>
+                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=47.3303&lon=5.04433" width="1024" height="768"></iframe>
+                </section>
+
+                <!-- Le Puy: 3.89439, 45.027 -->
+                <section>
+                    <h4>Sondage modélisé Météociel / Le Puy-en-Velay</h4>
+                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=45.027&lon=3.89439" width="1024" height="768"></iframe>
+                </section>
+
+                <!-- Mende: 3.49246, 44.529 -->
+                <section>
+                    <h4>Sondage modélisé Météociel / Mende</h4>
+                    <iframe src="http://www.meteociel.fr/modeles/sondage2.php?archive=0&ech=12&map=1&wrf=0&region=&type=1&lat=44.529&lon=3.49246" width="1024" height="768"></iframe>
+                </section>
+                </section>
+
+
+			<!-- un slide
 			    <section>
                     <h4>Humidité relative 12H UTC</h4>
                     <script>
                         document.write('<img src="http://modeles2.meteociel.fr/modeles_gfs/runs/'+ymd+'00/12-600.GIF" style="max-width:100%; max-height:100%; height:620px">');
                     </script>
 			    </section> -->
-			
-			    <!-- un slide 
+
+			    <!-- un slide
 			    <section>
                     <h4>Surface based CAPE 12H UTC</h4>
                     <script>
                         document.write('<img src="http://modeles2.meteociel.fr/modeles_gfs/runs/'+ymd+'00/12-505.GIF" style="max-width:100%; max-height:100%; height:620px">');
-                    </script>    
+                    </script>
 			    </section> -->
-			
-			    <!-- un slide 
+
+			    <!-- un slide
 			    <section>
                     <h4>Températures à 9h UTC</h4>
                     <script>
                         document.write('<img src="http://meteomaps.s3.amazonaws.com/eltiempo/datamaps/meteorama_fr_temp-'+ymd+'0900.png" style="max-width:100%; max-height:100%;">');
-                    </script> 
+                    </script>
 			    </section> -->
-			
-			    <!-- un slide 
+
+			    <!-- un slide
 			    <section>
                     <h4>Températures à 15h UTC</h4>
                     <script>
                         document.write('<img src="http://meteomaps.s3.amazonaws.com/eltiempo/datamaps/meteorama_fr_temp-'+ymd+'1500.png" style="max-width:100%; max-height:100%;">');
-                    </script> 
+                    </script>
 			    </section> -->
-			
-			
+
+
 			<!-- un tableau des FL du jour en fonction du QNH, et en dessous la page que j'utilise pour determiner le qnh du jour, les heures de coucher du soleil etc etc -->
 			    <section>
 			    <section>
@@ -386,7 +405,7 @@
                         function round5(x){
                             return Math.ceil(x/5)*5;
                         }
-            
+
                         $(document).ready(function() {
                             $("#qnh").change(function() {
                                 var qnh_value = $("#qnh").val();
@@ -394,41 +413,41 @@
                                 var pMer = 1013.25;
                                 var delta = 0;
                                 $("#qnh").val(qnh_value);
-            
+
                                 delta = (qnh_value - pMer) * mhPa;
                                 delta = delta.toFixed(0);
                                 $("#delta").text(delta);
-                                
+
                                 fl = delta*1 + 2286*1;
                                 fl = round5(fl);
                                 ;
                                 $("#fl75").text(fl);
-                                
+
                                 fl = delta*1 + 3505*1;
                                 fl = round5(fl);
                                 ;
                                 $("#fl115").text(fl);
-            
+
                                 fl = delta*1 + 3810*1;
                                 fl = round5(fl);
                                 ;
                                 $("#fl125").text(fl);
-            
+
                                 fl = delta*1 + 4115*1;
                                 fl = round5(fl);
                                 ;
                                 $("#fl135").text(fl);
-            
+
                                 fl = delta*1 + 4419*1;
                                 fl = round5(fl);
                                 ;
-                                $("#fl145").text(fl);                    
-            
+                                $("#fl145").text(fl);
+
                                 fl = delta*1 + 4724*1;
                                 fl = round5(fl);
                                 ;
                                 $("#fl155").text(fl);
-                                
+
                                 fl = delta*1 + 5943*1;
                                 fl = round5(fl);
                                 fl = fl+' (5800 Bure)';
@@ -436,10 +455,10 @@
                             });
                         });
                     </script>
-                    
+
                     <h4>Table des Niveaux de Vol</h4>
                     <div class="div_qnh">
-            
+
                         <div style="display:block; ">
                             <table class="alti" >
                                 <tbody>
@@ -473,19 +492,19 @@
                            <p> SS : <input type="text" id="ss" class="big_input_qnh" > </p>
                            <p>Fin des vols : <input type="text" id="fdv" class="big_input_qnh" ></p>
                         </div>
-            
+
                     </div>
-			        
-			    </section>
-
-			    <section data-autoslide="1">
-			        <iframe src="http://www.meteociel.fr/previsions/33652/chateau_arnoux_saint_auban.htm" width="1024" height="768"></iframe>
-			    </section>
-			
 
 			    </section>
 
-                <section>
+			    <section>
+			        <iframe src="http://www.meteociel.fr/previsions/15059/roanne.htm" width="1024" height="768"></iframe>
+			    </section>
+
+
+			    </section>
+
+                <!-- <section>
 
                 <section>
                     <img src="./Diapositive-1.jpg" style="height:620px;">
@@ -502,10 +521,10 @@
                 <section>
                     <img src="./Diapositive-4.jpg" style="height:620px;">
                 </section>
-                </section>
-			
-			
-			<!-- un slide 
+                </section> -->
+
+
+			<!-- un slide
 			    <section>
         <script>
             $(document).ready(function() {
@@ -524,20 +543,20 @@
             <li><a href="http://www.sia.aviation-civile.gouv.fr/asp/frameset_fr.asp?m=1" target="_blank" class="roll"><span data-title="Sup AIP">Sup AIP</span></a></li>
         </ul>
 			    </section> -->
-			
-			
-			
+
+
+
 			<!-- demain -->
 			    <section>
                     <h2>Demain</h2>
                     <h2>Tomorrow</h2>
 			    </section>
-			
+
                 <section>
                     <h4>Géopotentielle à 500mb J+1</h4>
                     <img src="https://static.meteoblue.com/pub/nems12/maps/00VHG50_036.jpg" style="height:620px;">
-                </section>			
-			
+                </section>
+
 			    <section>
                     <h4>Prévision Front à 0H UTC J+1</h4>
                     <script class='enLigne'>
@@ -547,11 +566,8 @@
                         document.write('<img src="https://cdn.knmi.nl/knmi/map/page/weer/waarschuwingen_verwachtingen/weerkaarten/PL'+day+'00_large.gif" style="height:620px;">');
                     </script>
 			    </section>
-			
 
-			
 
-			
 			    <section>
                    <h2>Bons vols</h2>
                    <img src="https://www-ee.stanford.edu/~hellman/soaring/pics/020717Yos/14.jpg" style="height:600px">
